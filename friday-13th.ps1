@@ -7,4 +7,15 @@
  #
  # ========================================== #>
 
- 2022..2027 | ForEach-Object { "Fridays to stay in bed in " + $_ + "?" }
+ 2022..2027 | ForEach-Object { 
+  $year = $_
+  "Fridays to stay in bed in " + $year + "?"
+  $months = 1,2,3,4,5,6,7,8,9,10,11,12
+  foreach ($month in $months)
+  {
+    $date = Get-Date -Year $year -Month $month -Day 13
+    if ($date -eq [System.DayOfWeek]::Friday){
+     Write-Output $date.ToString('yyyy-MM-dd')
+     }
+  }
+ }
